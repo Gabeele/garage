@@ -9,14 +9,7 @@ RSpec.describe PagesController, type: :controller do
     it "returns http success" do
       get :landing
       expect(response).to have_http_status(:success)
-      expect(response.body).to include("Welcome to Garage")
-      expect(response.body).to include("Vehkalians")
-    end
-
-    it "returns welcome page" do
-      get :landing
-      expect(response.body).to include("Welcome to Garage")
-      expect(response.body).to include("Vehkalians")
+      expect(response.body).to include("Feed")
     end
   end
 
