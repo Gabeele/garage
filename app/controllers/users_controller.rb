@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   allow_unauthenticated_access only: [ :new, :create ]
   def new
+    @user = User.new
     render "registrations/new", layout: "session"
   end
 
@@ -8,9 +9,9 @@ class UsersController < ApplicationController
     @user = User.new(sign_up_params)
     if @user.save
       start_new_session_for(@user)
-      redirect_to root_path
+      redirect_to dashboard_path, notice: "Account created successfully. Welcome!"
     else
-      render :new, status: :unprocessable_entity
+      render "registrations/new", layout: "session", status: :unprocessable_entity
     end
   end
 
