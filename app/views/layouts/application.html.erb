@@ -26,15 +26,12 @@
   <body class="">
   <div class="max-w-5xl mx-auto flex flex-col">
     <!-- Header -->
-    <header class="h-14 flex items-center px-4 gap-4">
-      <%= image_tag "gradient.jpg", alt: "Logo", height: 40, width: 40 %>
-      Garage
-    </header>
+    <%= render "layouts/partials/header" %>
 
     <!-- Content row -->
     <div class="flex flex-1 gap-4 items-start">
       <!-- Left sidebar -->
-      <nav class="w-40 text-sm text-gray-700 border border-gray-300 rounded-md m-4 p-4">
+      <nav class="w-40 text-sm text-gray-700 border border-gray-300 rounded-md m-4 p-4 flex-col">
         <% if authenticated? %>
           You
           <hr class="text-gray-300 pb-2"/>
@@ -42,6 +39,7 @@
           <%= button_to "Sign out", session_path, method: :delete %>
         <% else %>
           <%= link_to "Sign in", new_session_path %>
+          <%= link_to "Sign up" %>
         <% end %>
       </nav>
 
@@ -56,5 +54,6 @@
         <hr class="text-gray-300"/>
       </aside>
     </div>
+  </div>
   </body>
 </html>
