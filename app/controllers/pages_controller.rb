@@ -1,10 +1,10 @@
 class PagesController < ApplicationController
-  allow_unauthenticated_access only: ['landing']
-  def landing
-    render "landing"
+  allow_unauthenticated_access only: ['popular']
+  def popular
+    render "popular"
   end
 
-  def dashboard
-    render "dashboard"
+  def home
+    render "home"
   end
 end

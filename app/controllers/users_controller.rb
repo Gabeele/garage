@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     @user = User.new(sign_up_params)
     if @user.save
       start_new_session_for(@user)
-      redirect_to dashboard_path, notice: "Account created successfully. Welcome!"
+      redirect_to home_path, notice: "Account created successfully. Welcome!"
     else
       render "registrations/new", layout: "session", status: :unprocessable_entity
     end
