@@ -50,6 +50,18 @@ RSpec.describe Topic, type: :model do
       topic.valid?
       expect(topic.errors[:name]).to include("only allow letters, numbers, and dashes")
     end
+  end
 
+  context "hooks" do
+    it "downcases name on save" do
+      topic = Topic.new(name: "Hello-WORLD-123", user:user)
+      topic.save
+      expect(topic.name).to eq("hello-world-123")
+    end
+  end
+
+  it "returns slug" do
+    topic = Topic.new(name: "hello-world-123", user:user)
+    expect(topic.slug).to eq("g/hello-world-123")
   end
 end

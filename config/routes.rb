@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   # root "posts#index"
   root "pages#popular"
   get "home" => "pages#home", as: :home
+  resources :topics
 end

@@ -1,0 +1,8 @@
+<h1>Topics</h1>
+<p>Explore topics and subscribe!</p>
+
+<ul>
+  <% @topics.each do |topic| %>
+      <li><%= link_to topic.name, topic.slug %></li>
+  <% end %>
+</ul>

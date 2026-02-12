@@ -5,4 +5,10 @@ class Topic < ApplicationRecord
             length: { in: 1..20 },
             format: { with: /\A[a-zA-Z0-9-]+\z/, message: "only allow letters, numbers, and dashes" }
   belongs_to :user
+
+  before_save {self.name.downcase!}
+
+  def slug
+    "g/#{self.name}"
+  end
 end
