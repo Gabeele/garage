@@ -9,4 +9,11 @@
 #   end
 
 user = User.create(email_address: "user@example.com", password: "password")
-Topic.create(name: "Hello-world", user:)
+Topic.create(name: Faker::Lorem.word, user:)
+Topic.create(name: Faker::Lorem.word, user:)
+Topic.create(name: Faker::Lorem.word, user:)
+Topic.create(name: Faker::Lorem.word, user:)
+Topic.create(name: Faker::Lorem.word, user:)
+Topic.create(name: Faker::Lorem.word, user:)
+Topic.create(name: Faker::Lorem.word, user:)
+Topic.create(name: Faker::Lorem.word, user:)
