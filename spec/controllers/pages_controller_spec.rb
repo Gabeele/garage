@@ -5,23 +5,23 @@ require "rails_helper"
 RSpec.describe PagesController, type: :controller do
   render_views
 
-  describe "GET #landing" do
+  describe "GET #popular" do
     it "returns http success" do
-      get :landing
+      get :popular
       expect(response).to have_http_status(:success)
-      expect(response.body).to include("Feed")
+      expect(response.body).to include("Popular")
+    end
+
+    it "page has sign in link when not authenticated" do
+      get :popular
+      expect(response.body).to include("Sign in")
     end
   end
 
-  describe "GET #dashboard" do
-    it "returns http redirect" do
-      get :dashboard
-      expect(response.status).to equal(302)
-    end
-
-    it "page has sign in button" do
-      get :landing
-      expect(response.body).to include("Sign in")
+  describe "GET #home" do
+    it "redirects when not authenticated" do
+      get :home
+      expect(response).to have_http_status(:redirect)
     end
 
     context "user is authenticated" do
@@ -32,12 +32,12 @@ RSpec.describe PagesController, type: :controller do
       end
 
       it "returns http success" do
-        get :dashboard
+        get :home
         expect(response).to have_http_status(:success)
       end
 
       it "page has sign out button" do
-        get :dashboard
+        get :home
         expect(response.body).to include("Sign out")
       end
     end

@@ -17,5 +17,7 @@ Rails.application.routes.draw do
   root "pages#popular"
   get "home" => "pages#home", as: :home
   get "explore" => "topics#index", as: :explore
+  get "g/:name" => "topics#show", as: :topic_show
+  resources :topics, only: [:new, :create]
   # resources :topics
 end

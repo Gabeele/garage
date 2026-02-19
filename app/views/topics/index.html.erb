@@ -1,5 +1,6 @@
 <%= render 'partials/page_header', title: "Explore", description: "Explore various topics and threads created by users!" %>
 <div class="flex flex-wrap gap-2 mt-4">
+  <%= link_to "+ Add Topic", new_topic_path, class: "inline-block px-3 py-1.5 text-sm bg-orange-100 text-orange-700 rounded hover:bg-orange-300 transition-colors" %>
   <% @topics.each do |topic| %>
     <%= link_to topic.name, topic.slug,
         class: "inline-block px-3 py-1.5 text-sm bg-sky-100 text-sky-700 rounded hover:bg-sky-200 transition-colors" %>
