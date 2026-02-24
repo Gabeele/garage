@@ -1,0 +1,25 @@
+<%= render 'partials/page_header', title: "Posts", description: "Browse all posts from the community." %>
+
+<div class="flex flex-wrap gap-2 mb-6">
+  <%= link_to "+ New Post", new_post_path, class: "inline-block px-3 py-1.5 text-sm bg-orange-100 text-orange-700 rounded hover:bg-orange-300 transition-colors" %>
+</div>
+
+<div class="space-y-4">
+  <% if @posts.any? %>
+    <% @posts.each do |post| %>
+      <div class="border border-gray-200 rounded-md p-4 hover:bg-gray-50 transition-colors">
+        <%= link_to post_path(post), class: "block" do %>
+          <h2 class="font-semibold text-lg text-gray-900"><%= post.title %></h2>
+          <p class="text-gray-600 mt-1 line-clamp-2"><%= truncate(post.content, length: 150) %></p>
+          <div class="flex items-center gap-4 mt-2 text-sm text-gray-500">
+            <span><%= post.likes || 0 %> likes</span>
+            <span><%= post.dislikes || 0 %> dislikes</span>
+            <span>in <%= post.topic&.name || "No topic" %></span>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  <% else %>
+    <p class="text-gray-600">No posts yet. Be the first to create one!</p>
+  <% end %>
+</div>

@@ -1,0 +1,31 @@
+<% if @post.errors.any? %>
+  <div class="py-2 px-3 bg-red-50 mb-5 text-red-500 font-medium rounded-md">
+    <h2><%= pluralize(@post.errors.count, "error") %></h2>
+    <ul class="list-disc list-inside mt-2">
+      <% @post.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_with model: @post, class: "contents" do |form| %>
+  <div class="my-5">
+    <%= form.label :title, class: "block text-sm font-medium text-gray-700" %>
+    <%= form.text_field :title, required: true, autofocus: true, placeholder: "Enter post title", class: "block rounded-md border border-gray-300 focus:outline-none focus:border-gray-500 px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :content, class: "block text-sm font-medium text-gray-700" %>
+    <%= form.text_area :content, required: true, placeholder: "Write your post content...", rows: 6, class: "block rounded-md border border-gray-300 focus:outline-none focus:border-gray-500 px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :topic_id, "Topic", class: "block text-sm font-medium text-gray-700" %>
+    <%= form.collection_select :topic_id, Topic.all, :id, :name, { prompt: "Select a topic" }, class: "block rounded-md border border-gray-300 focus:outline-none focus:border-gray-500 px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div>
+    <%= form.submit class: "rounded-md px-3.5 py-2.5 border border-gray-300 hover:bg-gray-50 text-gray-700 font-medium cursor-pointer" %>
+  </div>
+<% end %>
