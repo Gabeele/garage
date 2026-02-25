@@ -1,5 +1,12 @@
 <aside class="w-48 text-[13px] text-gray-600 pt-6 pl-4">
   <h3 class="font-medium text-gray-500 uppercase tracking-wide text-xs mb-3">Latest</h3>
   <div class="border-t border-gray-200"></div>
-  <%# Add latest items here %>
+
+  <ul class="mt-3 space-y-2">
+    <% @latest.each do |post| %>
+      <li>
+        <%= link_to post.title, post_path(post), class: "hover:text-blue-600" %>
+      </li>
+    <% end %>
+  </ul>
 </aside>
